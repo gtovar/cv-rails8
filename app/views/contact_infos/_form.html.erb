@@ -1,0 +1,30 @@
+<%= form_with(model: [@resume, @contact_info], local: true) do |form| %>
+  <% if @contact_info.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@contact_info.errors.count, "error") %> impidieron guardar:</h2>
+      <ul>
+        <% @contact_info.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.telephone_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_area :address, class: "form-control" %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+

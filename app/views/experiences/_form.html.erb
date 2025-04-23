@@ -1,0 +1,35 @@
+<%= form_with(model: [@resume, @experience], local: true) do |form| %>
+  <% if @experience.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@experience.errors.count, "error") %> impidieron guardar:</h2>
+      <ul>
+        <% @experience.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :company %>
+    <%= form.text_field :company, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.text_field :role, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date, class: "form-control" %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+

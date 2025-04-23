@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institution: MyString
+  degree: MyString
+  start_date: 2025-03-13
+  end_date: 2025-03-13
+  resume: one
+
+two:
+  institution: MyString
+  degree: MyString
+  start_date: 2025-03-13
+  end_date: 2025-03-13
+  resume: two

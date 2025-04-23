@@ -1,0 +1,14 @@
+<h1>Mis Currículums</h1>
+
+<%= link_to 'Nuevo Currículum', new_resume_path, class: "btn btn-primary mb-3" %>
+
+<ul>
+  <% @resumes.each do |resume| %>
+    <li>
+      <%= link_to "CV ##{resume.id}", resume_path(resume) %> |
+      <%= link_to 'Editar', edit_resume_path(resume) %> |
+      <%= link_to 'Eliminar', resume_path(resume), method: :delete, data: { confirm: "¿Estás seguro?" } %>
+    </li>
+  <% end %>
+</ul>
+

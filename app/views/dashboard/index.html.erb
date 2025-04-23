@@ -1,0 +1,11 @@
+<h1>Mi Panel de Control</h1>
+
+<% if @resume %>
+  <p>Tienes un currículum creado.</p>
+  <%= link_to 'Ver mi currículum', resume_path(@resume), class: "btn btn-primary" %>
+  <%= link_to 'Editar currículum', edit_resume_path(@resume), class: "btn btn-secondary" %>
+<% else %>
+  <p>Aún no tienes un currículum creado.</p>
+  <%= link_to 'Crear nuevo currículum', new_resume_path, class: "btn btn-primary" %>
+<% end %>
+

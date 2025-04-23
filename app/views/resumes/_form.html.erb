@@ -1,0 +1,18 @@
+<%= form_with(model: resume, local: true) do |form| %>
+  <% if resume.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(resume.errors.count, "error") %> impidieron guardar el currículum:</h2>
+      <ul>
+        <% resume.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Aquí puedes agregar campos si tu modelo Resume los tiene -->
+  <div class="form-group">
+    <%= form.submit %>
+  </div>
+<% end %>
+

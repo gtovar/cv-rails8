@@ -1,0 +1,91 @@
+<h1>Currículum #<%= @resume.id %></h1>
+
+<!-- 🧾 Información de contacto -->
+<% if @resume.contact_info.present? %>
+  <section>
+    <h2>Información de Contacto</h2>
+    <p><strong>Email:</strong> <%= @resume.contact_info.email %></p>
+    <p><strong>Teléfono:</strong> <%= @resume.contact_info.phone %></p>
+    <p><strong>Dirección:</strong> <%= @resume.contact_info.address %></p>
+    <%= link_to 'Editar', edit_resume_contact_info_path(@resume) %> |
+    <%= link_to 'Eliminar', resume_contact_info_path(@resume), method: :delete, data: { confirm: '¿Estás seguro?' } %>
+  </section>
+<% else %>
+  <p><%= link_to 'Agregar Información de Contacto', new_resume_contact_info_path(@resume) %></p>
+<% end %>
+
+<hr>
+
+<!-- 💼 Experiencia laboral -->
+<section>
+  <h2>Experiencia</h2>
+  <%= link_to 'Agregar experiencia', new_resume_experience_path(@resume), class: "btn btn-sm btn-primary" %>
+  <ul>
+    <% @resume.experiences.each do |exp| %>
+      <li>
+        <strong><%= exp.role %></strong> en <%= exp.company %>
+        (<%= exp.start_date.strftime("%b %Y") %> - <%= exp.end_date&.strftime("%b %Y") || "Actualidad" %>)
+        <%= link_to 'Editar', edit_resume_experience_path(@resume, exp) %> |
+        <%= link_to 'Eliminar', resume_experience_path(@resume, exp), method: :delete, data: { confirm: "¿Eliminar?" } %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<hr>
+
+<!-- 🎓 Educación -->
+<section>
+  <h2>Educación</h2>
+  <%= link_to 'Agregar educación', new_resume_education_path(@resume), class: "btn btn-sm btn-primary" %>
+  <ul>
+    <% @resume.educations.each do |edu| %>
+      <li>
+        <strong><%= edu.degree %></strong> - <%= edu.institution %>
+        (<%= edu.start_date.year %> - <%= edu.end_date&.year || "Actualidad" %>)
+        <%= link_to 'Editar', edit_resume_education_path(@resume, edu) %> |
+        <%= link_to 'Eliminar', resume_education_path(@resume, edu), method: :delete, data: { confirm: "¿Eliminar?" } %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<hr>
+
+<!-- 🛠️ Habilidades -->
+<section>
+  <h2>Habilidades</h2>
+  <%= link_to 'Agregar habilidad', new_resume_skill_path(@resume), class: "btn btn-sm btn-primary" %>
+  <ul>
+    <% @resume.skills.each do |skill| %>
+      <li>
+        <%= skill.name %> - <%= skill.level %>
+        <%= link_to 'Editar', edit_resume_skill_path(@resume, skill) %> |
+        <%= link_to 'Eliminar', resume_skill_path(@resume, skill), method: :delete, data: { confirm: "¿Eliminar?" } %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<hr>
+
+<!-- 📁 Proyectos -->
+<section>
+  <h2>Proyectos</h2>
+  <%= link_to 'Agregar proyecto', new_resume_project_path(@resume), class: "btn btn-sm btn-primary" %>
+  <ul>
+    <% @resume.projects.each do |proj| %>
+      <li>
+        <strong><%= proj.title %></strong>: <%= proj.description %>
+        <%= link_to 'Editar', edit_resume_project_path(@resume, proj) %> |
+        <%= link_to 'Eliminar', resume_project_path(@resume, proj), method: :delete, data: { confirm: "¿Eliminar?" } %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<hr>
+
+<%= link_to 'Editar currículum', edit_resume_path(@resume) %> |
+<%= link_to 'Volver a la lista', resumes_path %>
+
