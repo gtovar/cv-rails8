@@ -18,8 +18,9 @@ Rails.application.routes.draw do
       resources :experiences, except: [ :index, :show ]
       resources :educations, except: [ :index, :show ]
       resources :skills, except: [ :index, :show ]
-      resources :projects, except: [ :index, :show ]
+      resources :projects, only: [ :show ]
       resource :contact_info, except: [ :show ]
+      resources :certifications
     end
 
     # Acciones adicionales (como descargar el CV)
