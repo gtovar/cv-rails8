@@ -35,8 +35,6 @@
 *.keep
 *.DS_Store
 *.swp
-
-# Ignorar todos los seeds privados por seguridad
-/lib/seeds/
-
-lib/tasks/*.rake
+# Ignorar todos los tasks y seeds personalizados
+lib/tasks/*
+lib/seeds/*
