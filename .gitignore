@@ -39,3 +39,4 @@
 # Ignorar todos los seeds privados por seguridad
 /lib/seeds/
 
+lib/tasks/*.rake
