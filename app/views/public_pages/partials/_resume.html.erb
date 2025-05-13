@@ -2,52 +2,57 @@
 <section id="resume" class="resume section-padding bg-img bg-fixed" data-overlay-brown="8" data-background="<%= cdn_asset('images/gil/foto9.jpeg') %>">
   <div class="container">
     <div class="row">
+
+      <!-- Experiencia Laboral -->
       <div class="col-md-5 valign">
         <div class="o-hidden full-width">
           <div class="profile">
             <div class="block">
               <h4>Experiencia Laboral</h4>
-              <div class="item">
-                <h6>Capitaltech Financial<span>2019 - 2024</span></h6>
-                <p>Coordinador de Software</p>
-              </div>
-              <div class="item">
-                <h6>Diverza Informacion y Analisis, SAPI de C.V.<span>2017 - 2019</span></h6>
-                <p>Full Stack Developer</p>
-              </div>
-              <div class="item">
-                <h6>PCR Konsigue SAPI de C.V.<span>2015 - 2017</span></h6>
-                <p>Cofundador</p>
-              </div>
-              <div class="item">
-                <h6>Universidad Autónoma de Nuevo León<span>2014 - 2016</span></h6>
-                <p>Full Stack Developer</p>
-              </div>
-              <div class="item">
-                <h6>Incaztech S. de R.L.<span>2012 - 2014</span></h6>
-                <p>Desarrollador Web</p>
-              </div>
+
+              <% @resume.experiences.order(start_date: :desc).each do |exp| %>
+                <div class="item">
+                  <h6>
+                    <%= exp.company %>
+                    <% if exp.start_date && exp.end_date %>
+                      <span><%= exp.start_date.year %> - <%= exp.end_date.year %></span>
+                    <% elsif exp.start_date %>
+                      <span><%= exp.start_date.year %> - Actual</span>
+                    <% end %>
+                  </h6>
+                  <p><%= exp.position %></p>
+                </div>
+              <% end %>
+
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Educación -->
       <div class="col-md-5 offset-md-2 valign">
         <div class="o-hidden full-width">
           <div class="profile">
             <div class="block">
               <h4>Educación</h4>
-              <div class="item">
-                <h6>Universidad Autónoma de Nuevo León (UANL)<span>2012</span></h6>
-                <p>Licenciatura en Tecnologías de Información - Titulado</p>
-              </div>
-              <div class="item">
-                <h6>Universidad Tecnológica de México (UNITEC)<span>2005</span></h6>
-                <p>MIT University</p>
-              </div>
+
+              <% @resume.educations.order(start_date: :desc).each do |edu| %>
+                <div class="item">
+                  <h6>
+                    <%= edu.institution %>
+                    <% if edu.start_date %>
+                      <span><%= edu.start_date.year %></span>
+                    <% end %>
+                  </h6>
+                  <p><%= edu.degree %><% if edu.field.present? %> - <%= edu.field %><% end %></p>
+                </div>
+              <% end %>
+
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

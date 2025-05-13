@@ -1,91 +1,30 @@
-<!-- Works Section -->
+<!-- Work Section -->
 <section id="work" class="section-padding">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h6 class="heading-subtitle">Recent work completed</h6>
+        <h6 class="heading-subtitle">Proyectos destacados</h6>
         <h2 class="heading-title">Work showcase</h2> 
       </div>
     </div>
+
     <div class="row">
-      <div class="work-container col-md-4">
-        <a href="work-page.html">
-          <div class="work-zoomer"> <img src="<%= cdn_asset('images/portfolio/1.jpg') %>" alt="" />
-            <div class="overlay">
-              <div class="work-texts">
-                <h5>Work P.01</h5>
-                <div class="line"></div>
-                <p>Book Design, Adobe XD, Photoshop, Illustrator, Figma, Sketch</p>
+      <% @resume.projects.order(start_time: :desc).each_with_index do |project, index| %>
+        <div class="work-container col-md-4">
+          <a href="<%= resume_project_path(resume_id: @resume.id, id: project.slug) %>">
+            <div class="work-zoomer">
+              <img src="<%= cdn_asset("images/projects/#{project.cover || 'default.jpg'}") %>" alt="<%= project.name %>" />
+              <div class="overlay">
+                <div class="work-texts">
+                  <h5><%= project.name %></h5>
+                  <div class="line"></div>
+                  <p><%= project.tools || project.category %></p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="work-container col-md-4">
-        <a href="work-page.html">
-          <div class="work-zoomer"> <img src="<%= cdn_asset('images/portfolio/2.jpg') %>" alt="" />
-            <div class="overlay">
-              <div class="work-texts">
-                <h5>Work P.02</h5>
-                <div class="line"></div>
-                <p>Art Design, Adobe XD, Photoshop, Illustrator, Figma, Sketch</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="work-container col-md-4">
-        <a href="work-page.html">
-          <div class="work-zoomer"> <img src="<%= cdn_asset('images/portfolio/3.jpg') %>" alt="" />
-            <div class="overlay">
-              <div class="work-texts">
-                <h5>Work P.03</h5>
-                <div class="line"></div>
-                <p>Product Design, Adobe XD, Photoshop, Illustrator, Figma, Sketch</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="work-container col-md-4">
-        <a href="work-page.html">
-          <div class="work-zoomer"> <img src="<%= cdn_asset('images/portfolio/4.jpg') %>" alt="" />
-            <div class="overlay">
-              <div class="work-texts">
-                <h5>Work P.04</h5>
-                <div class="line"></div>
-                <p>Book & Font Design, Adobe XD, Photoshop, Illustrator, Figma, Sketch</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="work-container col-md-4">
-        <a href="work-page.html">
-          <div class="work-zoomer"> <img src="<%= cdn_asset('images/portfolio/5.jpg') %>" alt="" />
-            <div class="overlay">
-              <div class="work-texts">
-                <h5>Work P.06</h5>
-                <div class="line"></div>
-                <p>Catalog Design, Adobe XD, Photoshop, Illustrator, Figma, Sketch</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="work-container col-md-4">
-        <a href="work-page.html">
-          <div class="work-zoomer"> <img src="<%= cdn_asset('images/portfolio/6.jpg') %>" alt="" />
-            <div class="overlay">
-              <div class="work-texts">
-                <h5>Work P.07</h5>
-                <div class="line"></div>
-                <p>Corporate Design, Adobe XD, Photoshop, Illustrator, Figma, Sketch</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>

@@ -9,26 +9,29 @@
               <div class="col-md-6 offset-md-6 js-fullheight slider-text">
                 <div class="slider-text-inner">
                   <div class="desc">
-                    <h2>Gilberto Tovar</h2>
-                    <h6>Desarrollador</h6>
+                    <h2><%= @resume.title %></h2>
+                    <h6><%= @resume.subtitle %></h6>
+                    <% email = @resume.contact_infos.find_by(kind: "email")&.value %>
+                    <% phone = @resume.contact_infos.find_by(kind: "phone")&.value %>
+                    <% city = "Monterrey, Nuevo León" %> <!-- o agregar como contact_info si lo prefieres -->
                     <div class="line"></div>
                     <ul class="cardvisit-list">
                       <div class="list">
                         <div class="icon"><i class="ti-headphone-alt"></i></div>
                         <div class="text">
-                          <p><a href="tel:+41-(0)41-888-74-88">+1 (650) 123 4444</a></p>
+                          <p><a href="tel:<%= phone %>"><%= phone %></a></p>
                         </div>
                       </div>
                       <div class="list">
                         <div class="icon"> <i class="ti-email"></i> </div>
                         <div class="text">
-                          <p><a href="mailto:contacto@gilbertotovar.com">contacto@gilbertotovar.com</a></p>
+                          <p><a href="mailto:<%= email %>"><%= email %></a></p>
                         </div>
                       </div>
                       <div class="list">
                         <div class="icon"> <i class="ti-location-pin"></i> </div>
                         <div class="text">
-                          <p>Monterrey, Nuevo Leon</p>
+                          <p><%= city %></p>
                         </div>
                       </div>
                     </ul>
