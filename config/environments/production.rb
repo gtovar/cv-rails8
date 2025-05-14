@@ -1,4 +1,7 @@
 require "active_support/core_ext/integer/time"
+if Rails.env.production? && ENV["ON_HEROKU"] != "true"
+  require "dotenv/load"
+end
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

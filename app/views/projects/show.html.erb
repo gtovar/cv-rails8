@@ -1,0 +1,111 @@
+<!-- Header Banner -->
+<div class="banner-header banner-padding valign bg-img bg-fixed" data-overlay-brown="8" data-background="<%= cdn_asset('images/banner2.jpg') %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-left caption">
+        <h5><%= link_to 'Work', '#work' %> / <%= @project.slug.titleize %></h5>
+        <h1><%= @project.name %></h1>
+        <hr>
+        <p><%= @project.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Work Page -->
+<div class="section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% if @project.activity_description.present? %>
+          <p><%= simple_format(@project.activity_description) %></p>
+        <% end %>
+
+        <% if @project.activities.present? || @project.outstanding.present? %>
+          <ul class="list-unstyled services_list">
+            <% if @project.name %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text"><p><b>Project Name:</b> <%= @project.name %></p></div>
+              </li>
+            <% end %>
+            <% if @project.position %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text"><p><b>Role:</b> <%= @project.position %></p></div>
+              </li>
+            <% end %>
+            <% if @project.tools %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text"><p><b>Tools:</b> <%= @project.tools %></p></div>
+              </li>
+            <% end %>
+            <% if @project.category %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text"><p><b>Category:</b> <%= @project.category.titleize %></p></div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <!-- Gallery (optional with cover and logo)-->
+        <div class="row">
+          <% if @project.cover.present? %>
+            <div class="col-md-6">
+              <div class="gallery-item mb-30">
+                <a href="<%= cdn_asset("images/projects/#{@project.cover}") %>" title="" class="img-zoom">
+                  <div class="gallery-box">
+                    <div class="gallery-img">
+                      <img src="<%= cdn_asset("images/projects/#{@project.cover}") %>" class="img-fluid mx-auto d-block" alt="">
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          <% end %>
+          <% if @project.logo.present? %>
+            <div class="col-md-6">
+              <div class="gallery-item">
+                <a href="<%= cdn_asset("images/projects/#{@project.logo}") %>" title="" class="img-zoom">
+                  <div class="gallery-box">
+                    <div class="gallery-img">
+                      <img src="<%= cdn_asset("images/projects/#{@project.logo}") %>" class="img-fluid mx-auto d-block" alt="">
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Prev-Next Projects -->
+<!-- Prev-Next Projects -->
+<div class="work-prev-next">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div class="work-prev-next-left">
+            <% if @previous_project %>
+              <%= link_to("<i class='ti-arrow-left'></i> Proyecto anterior".html_safe, resume_project_path(resume_id: @resume.id, id: @previous_project.slug)) %>
+            <% end %>
+          </div>
+
+          <%= link_to raw("<i class='ti-layout-grid3-alt'></i>"), public_resume_path %>
+
+          <div class="work-prev-next-right">
+            <% if @next_project %>
+              <%= link_to("Próximo proyecto <i class='ti-arrow-right'></i>".html_safe, resume_project_path(resume_id: @resume.id, id: @next_project.slug)) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
