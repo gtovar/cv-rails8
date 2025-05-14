@@ -2,20 +2,22 @@
 <div class="gorman-logo">
   <div class="desc">
     <div class="image-wrap">
-      <a href="index.html"><img src=" <%= cdn_asset('images/gil/foto8.jpeg') %>" alt=""></a>
+      <%= link_to root_path do %>
+        <img src="<%= cdn_asset('images/gil/foto8.jpeg') %>" alt="">
+      <% end %>
     </div>
-    <div class="title"> <a href="index.html">G. Tovar</a> </div>
+    <div class="title"><%= link_to "G. Tovar", root_path %></div>
   </div>
 </div>
 <!-- Menu -->
 <nav class="gorman-main-menu">
   <ul>
-    <li><a href="index.html#home">Home</a></li>
-    <li><a href="#about">Sobre mí</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><%= link_to "Home", root_path(anchor: "home") %></li>
+    <li><%= link_to "Sobre mí", root_path(anchor: "about") %></li>
+    <li><%= link_to "Services", root_path(anchor: "services") %></li>
+    <li><%= link_to "Work", root_path(anchor: "work") %></li>
+    <li><%= link_to "Blog", root_path(anchor: "blog") %></li>
+    <li><%= link_to "Contact", root_path(anchor: "contact") %></li>
   </ul>
 </nav>
 <!-- Sidebar Footer -->

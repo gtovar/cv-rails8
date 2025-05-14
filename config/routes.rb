@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
+  post "/contact_messages", to: "contact_messages#create", as: "contact_messages"
+
   scope "(:locale)", locale: /en|es/ do
     devise_for :users, path: "", path_names: { sign_in: "login", sign_out: "logout" }
 
