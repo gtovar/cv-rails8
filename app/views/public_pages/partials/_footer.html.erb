@@ -2,60 +2,77 @@
 <footer class="main-footer">
   <div class="container">
     <div class="row">
+
+      <!-- Sobre mí -->
       <div class="col-md-3 mb-30">
         <div class="item abot">
           <div class="fothead">
-            <h6>Frances Gorman</h6> </div>
-          <p>I am a creative director and designer based in California, United States.</p>
-          <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="index.html"><i class="ti-twitter"></i></a> <a href="index.html"><i class="ti-instagram"></i></a> <a href="index.html"><i class="ti-pinterest"></i></a> </div>
+            <h6>Gilberto Tovar</h6>
+          </div>
+          <p>Desarrollador de software especializado en Ruby on Rails y soluciones backend. Apasionado por la tecnología y la innovación.</p>
+          <div class="social-icon">
+            <a href="https://www.linkedin.com/in/giltovar" target="_blank"><i class="ti-linkedin"></i></a>
+            <a href="mailto:contacto@gilbertotovar.com"><i class="ti-email"></i></a>
+          </div>
         </div>
       </div>
+
+      <!-- Navegación -->
       <div class="col-md-2 offset-md-1 mb-30">
         <div class="item usful-links">
           <div class="fothead">
-            <h6>Useful Links</h6> </div>
+            <h6>Secciones</h6>
+          </div>
           <ul>
-            <li><i class="ti-angle-right"></i> <a href="#0">About</a></li>
-            <li><i class="ti-angle-right"></i> <a href="#0">Services</a></li>
-            <li><i class="ti-angle-right"></i> <a href="#0">Works</a></li>
-            <li><i class="ti-angle-right"></i> <a href="#0">Blog</a></li>
+            <li><i class="ti-angle-right"></i> <%= link_to "Sobre mí", root_path(anchor: "about") %></li>
+            <li><i class="ti-angle-right"></i> <%= link_to "Servicios", root_path(anchor: "services") %></li>
+            <li><i class="ti-angle-right"></i> <%= link_to "Proyectos", root_path(anchor: "work") %></li>
+            <li><i class="ti-angle-right"></i> <%= link_to "Contacto", root_path(anchor: "contact") %></li>
           </ul>
         </div>
       </div>
+
+      <!-- Contacto -->
       <div class="col-md-3 mb-30">
         <div class="item fotcont">
           <div class="fothead">
-            <h6>Get in touch</h6> </div>
-          <p>+1 234-444-5555</p>
-          <p>info@fgorman.com</p>
-          <p>support@fgorman.com</p>
+            <h6>Contacto</h6>
+          </div>
+          <p><a href="tel:8113129230">811 312 9230</a></p>
+          <p><a href="mailto:contacto@gilbertotovar.com">contacto@gilbertotovar.com</a></p>
         </div>
       </div>
+
+      <!-- Ubicación -->
       <div class="col-md-3 mb-30">
         <div class="item fotcont">
           <div class="fothead">
-            <h6>Location</h6> </div>
-          <p>San Mateo</p>
-          <p>2 Curiosity Way, San Mateo</p>
-          <p>CA 94403, USA</p>
+            <h6>Ubicación</h6>
+          </div>
+          <p>Monterrey, Nuevo León</p>
+          <p>México</p>
         </div>
       </div>
+
     </div>
   </div>
+
+  <!-- Subfooter -->
   <div class="sub-footer">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
           <div class="text-left">
-            <p>© 2025, Gorman. All right reserved.</p>
+            <p>© 2025, Gilberto Tovar. Todos los derechos reservados.</p>
           </div>
         </div>
         <div class="col-md-5">
           <div class="text-right-left">
-            <p><a href="#0">Terms &amp; Conditions</a> <span>|</span> <a href="#0">Impression</a></p>
+            <p><a href="#">Términos</a> <span>|</span> <a href="#">Aviso Legal</a></p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </footer>
+

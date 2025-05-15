@@ -10,7 +10,7 @@ class ContactMailer < ApplicationMailer
 
     mail(
       from: @email,
-      subject: "Nuevo mensaje de contacto: #{@subject}"
+      subject: "SITIO WEB te envian un correo de: #{@email}"
     )
   end
 end
