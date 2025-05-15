@@ -46,17 +46,14 @@
       <div class="col-md-6">
         <h5>Escríbeme</h5>
 
-        <%= form_with url: contact_messages_path, method: :post, remote: true, html: { class: "contact__form" } do |f| %>
+        <%= form_with url: contact_messages_path, method: :post, html: { class: "contact__form" } do |f| %>
           <div class="row">
             <div class="col-12">
-              <% if flash[:notice] %>
-                <div class="alert alert-success contact__msg">
-                  <%= flash[:notice] %>
-                </div>
-              <% end %>
+              <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                Your message was sent successfully.
+              </div>
             </div>
           </div>
-
           <div class="row">
             <div class="col-md-6 form-group">
               <%= f.text_field :name, placeholder: "Nombre *", required: true, class: "form-control" %>
