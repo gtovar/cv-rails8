@@ -38,3 +38,19 @@
 # Ignorar todos los tasks y seeds personalizados
 lib/tasks/*
 lib/seeds/*
+
+# === IGNORAR BASES DE DATOS LOCALES (.sqlite3) ===
+db/*.sqlite3
+cv_development
+
+# === IGNORAR CONFIGURACIONES LOCALES ADICIONALES ===
+config/database.multiple.yml
+
+# === IGNORAR ARCHIVOS DE LOG O TEMPORALES ===
+logfile
+
+# === IGNORAR ARCHIVOS DE TEST Y FIXTURES DE PRUEBA ===
+test/*
+*.yml
+*.log
+
