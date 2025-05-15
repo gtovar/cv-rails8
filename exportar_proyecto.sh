@@ -19,6 +19,20 @@ find . -type f \
     ! -path "./storage/*" \
     ! -path "./public/*" \
     ! -name "*.css" \
+    ! -name "*.png" \
+    ! -name "*.jpg" \
+    ! -name "*.jpeg" \
+    ! -name "*.gif" \
+    ! -name "*.svg" \
+    ! -name ".DS_Store" \
+    ! -name ".zip" \
+    ! -path "./.git/*" \
+    ! -name "*.swp" \
+    ! -name "*.swo" \
+    ! -name "*.tmp" \
+    ! -name "*.bak" \
+    ! -name "*.sqlite" \
+    ! -name "*.sqlite3" \
     ! -name "$SCRIPT_NAME" \
     ! -name "$OUTPUT_FILE" | while read -r file; do
     echo "=== INICIO: $file ===" >> "$OUTPUT_FILE"

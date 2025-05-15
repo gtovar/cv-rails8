@@ -1,5 +1,5 @@
 class ContactMailer < ApplicationMailer
-  default to: "contacto@gilbertotovar.com"
+  default to: -> { Resume.first.contact_infos.find_by(kind: "email")&.value }
 
   def contact_message(params)
     @name    = params[:name]

@@ -7,7 +7,7 @@
       <div class="col-md-3 mb-30">
         <div class="item abot">
           <div class="fothead">
-            <h6>Gilberto Tovar</h6>
+            <h6><%= @resume.title %></h6>
           </div>
           <p>Desarrollador de software especializado en Ruby on Rails y soluciones backend. Apasionado por la tecnología y la innovación.</p>
           <div class="social-icon">
@@ -38,8 +38,8 @@
           <div class="fothead">
             <h6>Contacto</h6>
           </div>
-          <p><a href="tel:8113129230">811 312 9230</a></p>
-          <p><a href="mailto:contacto@gilbertotovar.com">contacto@gilbertotovar.com</a></p>
+          <p><a href="tel:<%= contact_info("phone") %>"><%= contact_info("phone") %> </a></p>
+          <p><a href="mailto:<%= contact_info("email") %>"><%= contact_info("email") %></a></p>
         </div>
       </div>
 
@@ -49,8 +49,8 @@
           <div class="fothead">
             <h6>Ubicación</h6>
           </div>
-          <p>Monterrey, Nuevo León</p>
-          <p>México</p>
+          <p><%= contact_info("city") %></p>
+          <p><%= contact_info("country") %></p>
         </div>
       </div>
 
@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="text-left">
-            <p>© 2025, Gilberto Tovar. Todos los derechos reservados.</p>
+            <p>© 2025,<%= @resume.title %>. Todos los derechos reservados.</p>
           </div>
         </div>
         <div class="col-md-5">

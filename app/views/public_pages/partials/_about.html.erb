@@ -15,22 +15,24 @@
         Sigo sorprendiéndome con lo que se puede construir cuando uno entiende a fondo el problema, el contexto, y a veces incluso el modelo de negocio. Con el tiempo me he dado cuenta de que los proyectos que más disfruto tienen algo en común: lo financiero y lo fintech...
         </p>
 
-        <% email = @resume.contact_infos.find_by(kind: "email")&.value %>
-        <% phone = @resume.contact_infos.find_by(kind: "phone")&.value %>
-        <% linkedin = @resume.contact_infos.find_by(kind: "linkedin")&.value %>
         <% education = @resume.educations.order(start_date: :asc).last %>
+        <% birthdate = @resume.metadata["birthdate"] rescue nil %>
+
 
         <div class="about-info">
           <div class="row">
             <div class="col-md-6">
-              <p><b>Edad:</b> 39 años</p>
-              <p><b>Teléfono:</b> <%= phone %></p>
+              <% if birthdate.present? %>
+                <% edad = ((Time.zone.now - Date.parse(birthdate).to_time) / 1.year.seconds).floor %>
+                <p><b>Edad:</b> <%= edad %> años</p>
+              <% end %>
+              <p><b>Teléfono:</b> <%= contact_info("phone") %></p>
               <p><b>Estudios:</b> <%= education&.institution %> - <%= education&.field %></p>
             </div>
             <div class="col-md-6">
               <p><b>Grado:</b> <%= education&.degree %></p>
-              <p><b>Correo:</b> <%= email %></p>
-              <p><b>LinkedIn:</b> <%= linkedin %></p>
+              <p><b>Correo:</b> <%= contact_info("email") %></p>
+              <p><b>LinkedIn:</b> <%= contact_info("linkedin") %></p>
               <p><b>Freelance:</b> Disponible</p>
             </div>
           </div>

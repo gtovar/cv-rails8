@@ -5,15 +5,15 @@ default: &default
   url: <%= ENV["DATABASE_URL"] %>
 
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
+  host: localhost
+  database: cv_development
   timeout: 5000
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
+  host: localhost
+  database: cv_test
   timeout: 5000
 
 production:

@@ -11,11 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
-  create_schema "_heroku"
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "certifications", force: :cascade do |t|
     t.string "name"
@@ -23,7 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
     t.date "issue_date"
     t.date "expiration_date"
     t.string "credential_url"
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_certifications_on_resume_id"
@@ -32,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
   create_table "contact_infos", force: :cascade do |t|
     t.string "kind", null: false
     t.string "value", null: false
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id", "kind"], name: "index_contact_infos_on_resume_id_and_kind", unique: true
@@ -45,7 +42,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
     t.date "start_date"
     t.date "end_date"
     t.string "field"
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_educations_on_resume_id"
@@ -60,7 +57,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
     t.text "activities"
     t.text "achievements"
     t.text "tools"
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_experiences_on_resume_id"
@@ -69,15 +66,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.string "level"
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_languages_on_resume_id"
   end
 
   create_table "project_taggings", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "tag_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_project_taggings_on_project_id"
@@ -100,7 +97,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
     t.string "slug"
     t.string "link"
     t.boolean "actual", default: false, null: false
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_projects_on_resume_id"
@@ -108,10 +105,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
   end
 
   create_table "resumes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title", null: false
     t.string "subtitle"
     t.text "summary"
+    t.jsonb "metadata", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_resumes_on_user_id"
@@ -122,7 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
     t.string "level"
     t.string "category"
     t.text "description"
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_skills_on_resume_id"
@@ -250,9 +248,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id", null: false
+    t.bigint "tag_id", null: false
     t.string "taggable_type", null: false
-    t.integer "taggable_id", null: false
+    t.bigint "taggable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -261,7 +259,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_235230) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.integer "resume_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_tags_on_resume_id"
