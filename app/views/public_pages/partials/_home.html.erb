@@ -13,7 +13,6 @@
                     <h6><%= @resume.subtitle %></h6>
                     <% email = @resume.contact_infos.find_by(kind: "email")&.value %>
                     <% phone = @resume.contact_infos.find_by(kind: "phone")&.value %>
-                    <% city = "Monterrey, Nuevo León" %> <!-- o agregar como contact_info si lo prefieres -->
                     <div class="line"></div>
                     <ul class="cardvisit-list">
                       <div class="list">
@@ -31,7 +30,7 @@
                       <div class="list">
                         <div class="icon"> <i class="ti-location-pin"></i> </div>
                         <div class="text">
-                          <p><%= city %></p>
+                          <p><%= contact_info("city") %></p>
                         </div>
                       </div>
                     </ul>

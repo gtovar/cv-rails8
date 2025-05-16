@@ -33,6 +33,8 @@ find . -type f \
     ! -name "*.bak" \
     ! -name "*.sqlite" \
     ! -name "*.sqlite3" \
+    ! -name ".env.production" \
+    ! -name ".env.development" \
     ! -name "$SCRIPT_NAME" \
     ! -name "$OUTPUT_FILE" | while read -r file; do
     echo "=== INICIO: $file ===" >> "$OUTPUT_FILE"

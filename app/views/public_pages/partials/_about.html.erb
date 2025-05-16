@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6 mb-30">
         <h6 class="heading-subtitle">Sobre mí</h6>
-        <h2 class="heading-title"><%= @resume.title || "Gilberto Tovar" %></h2> 
+        <h2 class="heading-title"><%= @resume.title %></h2> 
 
         <p class="mb-30">
         Hola, soy Gil, te platico un poco sobre mi, me considero emprendedor, desarrollador web full-stack, tengo poco más de 10 años de experiencia y a lo largo de ese tiempo he tenido la oportunidad de trabajar con distintas tecnologías, probar lenguajes, frameworks y herramientas según el proyecto lo requería, pero siempre regreso a Ruby on Rails. Hay algo en su claridad y estructura que encaja perfectamente con mi forma de pensar y de construir.
@@ -48,7 +48,7 @@
       <div class="col-md-5 offset-md-1">
         <div class="about-img animate-box" data-animate-effect="fadeInUp">
           <div class="img">
-            <img src="<%= cdn_asset('images/gil/foto6.jpeg') %>" alt="<%= @resume.title || 'Gilberto Tovar' %>">
+            <img src="<%= cdn_asset('images/gil/foto6.jpeg') %>" alt="<%= @resume.title  %>">
           </div>
         </div>
       </div>
