@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "/contact_messages", to: "contact_messages#create", as: "contact_messages"
 
   scope "(:locale)", locale: /en|es/ do
-    devise_for :users, path: "", path_names: { sign_in: "login", sign_out: "logout" }
+    devise_for :users, path: "", path_names: { sign_in: "login", sign_out: "logout" },skip: [:registrations, :passwords]
 
     # Ruta al dashboard privado
     get "dashboard", to: "dashboard#index"
