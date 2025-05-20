@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 text-left caption">
-        <h5><%= link_to 'Work', '#work' %> / <%= @project.slug.titleize %></h5>
+        <h5><%= link_to 'Proyectos', root_path(anchor: "work") %> / <%= @project.slug.titleize %></h5>
         <h1><%= @project.name %></h1>
         <hr>
         <p><%= @project.description %></p>
@@ -17,8 +17,35 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <hr class="my-5">
+        <h3 class="mb-4">Sobre mi participación técnica</h3>
+
         <% if @project.activity_description.present? %>
           <p><%= simple_format(@project.activity_description) %></p>
+        <% end %>
+
+        <% if @project.activities.present? %>
+          <h4 class="mt-40">Funcionalidades realizadas</h4>
+          <ul class="list-unstyled services_list">
+            <% @project.activities.split("\n").each do |line| %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text"><p><%= line.gsub('-', '').strip %></p></div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @project.outstanding.present? %>
+          <h4 class="mt-40">Logros del proyecto</h4>
+          <ul class="list-unstyled services_list">
+            <% @project.outstanding.split("\n").each do |line| %>
+              <li>
+                <div class="icon"><span class="ti-star"></span></div>
+                <div class="text"><p><%= line.gsub('-', '').strip %></p></div>
+              </li>
+            <% end %>
+          </ul>
         <% end %>
 
         <% if @project.activities.present? || @project.outstanding.present? %>
@@ -47,6 +74,18 @@
                 <div class="text"><p><b>Category:</b> <%= @project.category.titleize %></p></div>
               </li>
             <% end %>
+            <% if @project.start_time && @project.end_time %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text">
+                  <p><b>Duración del proyecto:</b>
+                  <%= l @project.start_time, format: "%-d de %B de %Y" %> –
+                  <%= l @project.end_time, format: "%-d de %B de %Y" %>
+                  (<%= distance_of_time_in_words(@project.start_time, @project.end_time) %>)
+                  </p>
+                </div>
+              </li>
+            <% end %>
           </ul>
         <% end %>
 
@@ -55,10 +94,10 @@
           <% if @project.cover.present? %>
             <div class="col-md-6">
               <div class="gallery-item mb-30">
-                <a href="<%= cdn_asset("images/projects/#{@project.cover}") %>" title="" class="img-zoom">
+                <a href="<%= cdn_asset("images/projects/originales/#{@project.cover}") %>" title="" class="img-zoom">
                   <div class="gallery-box">
                     <div class="gallery-img">
-                      <img src="<%= cdn_asset("images/projects/#{@project.cover}") %>" class="img-fluid mx-auto d-block" alt="">
+                      <img src="<%= cdn_asset("images/projects/originales/#{@project.cover}") %>" class="img-fluid mx-auto d-block" alt="">
                     </div>
                   </div>
                 </a>

@@ -13,7 +13,7 @@
         <div class="work-container col-md-4">
           <a href="<%= resume_project_path(resume_id: @resume.id, id: project.slug) %>">
             <div class="work-zoomer">
-              <img src="<%= cdn_asset("images/projects/#{project.cover || 'default.jpg'}") %>" alt="<%= project.name %>" />
+              <img src="<%= cdn_asset("images/projects/originales/#{project.cover || 'default.jpg'}") %>" alt="<%= project.name %>" />
               <div class="overlay">
                 <div class="work-texts">
                   <h5><%= project.name %></h5>
