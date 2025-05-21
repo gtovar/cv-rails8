@@ -9,7 +9,6 @@
           <div class="profile">
             <div class="block">
               <h4>Experiencia Laboral</h4>
-
               <% @resume.experiences.order(start_date: :desc).each do |exp| %>
                 <div class="item">
                   <h6>
@@ -23,7 +22,6 @@
                   <p><%= exp.position %></p>
                 </div>
               <% end %>
-
             </div>
           </div>
         </div>
