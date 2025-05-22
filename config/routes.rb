@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     # Recursos anidados del currículum
     resources :resumes do
-      resources :experiences, only: [:new, :create, :edit, :update, :destroy, :show]
+      resources :experiences, only: [ :new, :create, :edit, :update, :destroy, :show ]
       resources :educations, except: [ :index, :show ]
       resources :skills, except: [ :index, :show ]
       resources :projects, only: [ :show ]

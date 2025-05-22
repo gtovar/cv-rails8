@@ -8,31 +8,31 @@
     </div>
 
     <div class="row">
-<!-- Información de contacto -->
-<div class="col-md-6 mb-4">
-  <h5>¿Tienes alguna propuesta?</h5>
-  <p>Estoy abierto a nuevas oportunidades, Si tienes algo en mente y crees que puedo ayudarte, mándame un mensaje.</p>
-  <ul class="list-unstyled contact-list">
-    <li>
-      <div class="icon"><span class="ti-headphone-alt"></span></div>
-      <div class="text">
-        <p><a href="tel:+<%= contact_info("phone") %>"><%= contact_info("phone") %></a></p>
+      <!-- Información de contacto -->
+      <div class="col-md-6 mb-4">
+        <h5>¿Tienes alguna propuesta?</h5>
+        <p>Estoy abierto a nuevas oportunidades, Si tienes algo en mente y crees que puedo ayudarte, mándame un mensaje.</p>
+        <ul class="list-unstyled contact-list">
+          <li>
+            <div class="icon"><span class="ti-headphone-alt"></span></div>
+            <div class="text">
+              <p><a href="tel:+<%= contact_info("phone") %>"><%= contact_info("phone") %></a></p>
+            </div>
+          </li>
+          <li>
+            <div class="icon"><span class="ti-email"></span></div>
+            <div class="text">
+              <p><a href="mailto:<%= contact_info("email") %>"><%= contact_info("email") %></a></p>
+            </div>
+          </li>
+          <li>
+            <div class="icon"><span class="ti-location-pin"></span></div>
+            <div class="text">
+              <p><%= contact_info("city") %></p>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
-    <li>
-      <div class="icon"><span class="ti-email"></span></div>
-      <div class="text">
-        <p><a href="mailto:<%= contact_info("email") %>"><%= contact_info("email") %></a></p>
-      </div>
-    </li>
-    <li>
-      <div class="icon"><span class="ti-location-pin"></span></div>
-      <div class="text">
-        <p><%= contact_info("city") %></p>
-      </div>
-    </li>
-  </ul>
-</div>
 
       <!-- Formulario de contacto -->
       <div class="col-md-6">

@@ -16,6 +16,6 @@ class ContactMessagesController < ApplicationController
   private
 
   def contact_params
-    params.permit(:name, :email, :phone, :subject, :message,:"g-recaptcha-response")
+    params.permit(:name, :email, :phone, :subject, :message, :"g-recaptcha-response")
   end
 end
