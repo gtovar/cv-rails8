@@ -1,6 +1,6 @@
 <!-- Header Banner -->
-<div class="banner-header banner-padding valign bg-img bg-fixed" data-overlay-brown="8" data-background="<%= cdn_asset('images/banner2.jpg') %>">
-  <div class="container">
+<div class="banner-header banner-padding valign bg-img bg-fixed" data-overlay-brown="8" data-background="<%= cdn_asset("images/projects/banner/#{@project.cover}") %>" >
+    <div class="container">
     <div class="row">
       <div class="col-md-6 text-left caption">
         <h5><%= link_to 'Proyectos', root_path(anchor: "work") %> / <%= @project.slug.titleize %></h5>
@@ -136,7 +136,7 @@
             <% end %>
           </div>
 
-          <%= link_to raw("<i class='ti-layout-grid3-alt'></i>"), public_resume_path %>
+          <%= link_to raw("<i class='ti-layout-grid3-alt'></i>"), root_path(anchor: "work") %>
 
           <div class="work-prev-next-right">
             <% if @next_project %>

@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 text-left caption">
-        <h5><%= @experience.company %></h5>
+        <h5>Experiencia Laboral / <%= @experience.company %></h5>
         <h1><%= @experience.position %></h1>
         <hr>
         <p><%= l(@experience.start_date, format: :long) %> – <%= @experience.end_date ? l(@experience.end_date, format: :long) : 'Presente' %></p>
