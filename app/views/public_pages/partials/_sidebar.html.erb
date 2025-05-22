@@ -13,11 +13,11 @@
 <nav class="gorman-main-menu">
   <ul>
     <li><%= link_to "Inicio", root_path, class: class_names("nav-link", "active": current_page?(root_path)) %></li>
-    <li><%= active_link_to "Sobre mí", root_path(anchor: "about"), class:""  %></li>
+    <li><%= link_to "Sobre mí", root_path(anchor: "about") %></li>
     <li><%= link_to "Experiencia Laboral", root_path(anchor: "resume"), class: class_names("active": controller_name == "experiences") %></li>
-    <li><%= active_link_to "Conocimientos", root_path(anchor: "conocimientos"), class:""  %></li>
-    <li><%= link_to "Proyectos", root_path(anchor: "resume"), class: class_names("active": controller_name == "projects") %></li>
-    <li><%= active_link_to "Contacto", root_path(anchor: "contact"), class:""  %></li>
+    <li><%= link_to "Conocimientos", root_path(anchor: "conocimientos") %></li>
+    <li><%= link_to "Proyectos", root_path(anchor: "work"), class: class_names("active": controller_name == "projects") %></li>
+    <li><%= link_to "Contacto", root_path(anchor: "contact")%></li>
   </ul>
 </nav>
 <!-- Sidebar Footer -->
