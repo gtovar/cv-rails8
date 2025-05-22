@@ -10,7 +10,7 @@
             <div class="block">
               <h4>Experiencia Laboral</h4>
               <% @resume.experiences.order(start_date: :desc).each do |exp| %>
-                <div class="item">
+                <%= link_to resume_experience_path(id: exp.id, resume_id: exp.resume_id), class: "item d-block text-white" do %>
                   <h6>
                     <%= exp.company %>
                     <% if exp.start_date && exp.end_date %>
@@ -20,7 +20,7 @@
                     <% end %>
                   </h6>
                   <p><%= exp.position %></p>
-                </div>
+                <% end %>
               <% end %>
             </div>
           </div>

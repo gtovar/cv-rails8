@@ -1,9 +1,13 @@
 class ExperiencesController < ApplicationController
+  layout "gorman_template"  # usa tu layout con assets externos
   before_action :set_resume
-  before_action :set_experience, only: %i[ show edit update destroy ]
+  before_action :set_experience
 
   def new
     @experience = @resume.experiences.build
+  end
+
+  def show
   end
 
   def create
@@ -33,7 +37,7 @@ class ExperiencesController < ApplicationController
   private
 
   def set_resume
-    @resume = current_user.resumes.find(params[:resume_id])
+    @resume = Resume.find(params[:resume_id])
   end
 
   def set_experience

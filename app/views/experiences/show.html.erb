@@ -1,0 +1,72 @@
+<!-- app/views/experiences/show.html.erb -->
+
+<!-- Banner de cabecera -->
+<div class="banner-header banner-padding valign bg-img bg-fixed" data-overlay-brown="8" data-background="<%= cdn_asset('images/banners/konsigue.jpg') %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 text-left caption">
+        <h5><%= @experience.company %></h5>
+        <h1><%= @experience.position %></h1>
+        <hr>
+        <p><%= l(@experience.start_date, format: :long) %> – <%= @experience.end_date ? l(@experience.end_date, format: :long) : 'Presente' %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="section-padding">
+  <div class="container">
+    <div class="row">
+      <!-- Descripción y detalles -->
+      <div class="col-md-8">
+        <div class="cont mb-60">
+          <p><%= simple_format(@experience.description) %></p>
+
+          <h6 class="mt-40">Actividades principales</h6>
+          <ul class="list-unstyled services_list">
+            <% @experience.activities.to_s.split("\n").each do |item| %>
+              <li>
+                <div class="icon"><span class="ti-check"></span></div>
+                <div class="text"><p><%= item.sub('- ', '') %></p></div>
+              </li>
+            <% end %>
+          </ul>
+
+          <h6 class="mt-40">Logros destacados</h6>
+          <ul class="list-unstyled services_list">
+            <% @experience.achievements.to_s.split("\n").each do |item| %>
+              <li>
+                <div class="icon"><span class="ti-medall"></span></div>
+                <div class="text"><p><%= item.sub('- ', '') %></p></div>
+              </li>
+            <% end %>
+          </ul>
+
+          <h6 class="mt-40">Herramientas utilizadas</h6>
+          <p class="mb-0"><%= @experience.tools %></p>
+        </div>
+      </div>
+
+      <!-- Barra lateral con otras experiencias -->
+      <div class="col-md-4 sidebar-side">
+        <aside class="sidebar blog-sidebar">
+          <div class="sidebar-widget services">
+            <div class="widget-inner">
+              <div class="sidebar-title">
+                <h5>Otras Experiencias</h5>
+              </div>
+              <ul>
+                <% Resume.find(@experience.resume_id).experiences.order(end_date: :desc).each do |exp| %>
+                  <li class="<%= 'active' if exp == @experience %>">
+                    <%= link_to exp.company, resume_experience_path(id: exp.id, resume_id: exp.resume_id) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
