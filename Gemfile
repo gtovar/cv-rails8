@@ -70,3 +70,4 @@ group :test do
 end
 
 gem "pg"
+gem 'recaptcha', require: 'recaptcha/rails'
